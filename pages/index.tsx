@@ -8,13 +8,11 @@ export async function getServerSideProps(context: NextPageContext) {
   if (!session) {
     return {
       redirect: {
-
         destination: '/auth',
         permanent: false,
       }
     }
   }
-
 
   return {
     props: {}
@@ -23,12 +21,11 @@ export async function getServerSideProps(context: NextPageContext) {
 
 export default function Home() {
 
-  const { data: user } = useCurrentUser();
+  // const { data: user } = useCurrentUser();
 
   return (
     <>
       <Navbar />
     </>
-
   )
 }
