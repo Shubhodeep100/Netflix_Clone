@@ -1,13 +1,41 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import MobileMenu from "./MobileMenu";
 import NavbarItem from "./NavbarItem";
 import { LuChevronDown } from "react-icons/lu";
+import { BsSearch, BsBell } from "react-icons/bs";
+import AccountMenu from "./AccountMenu";
+
+const TOP_OFFSET = 66;
+
 const Navbar = () => {
 
     const [showMobileMenu, setShowMobileMenu] = useState(false);
+    const [showAccountMenu, setShowAccountMenu] = useState(false);
+    const [showBackground, setShowBackground] = useState(false);
+
+
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY >= TOP_OFFSET) {
+                setShowBackground(true);
+            } else {
+                setShowBackground(false);
+            }
+        }
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    }, [])
 
     const toggleMobileMenu = useCallback(() => {
         setShowMobileMenu((current) => !current)
+    }, []);
+
+    const toggleAccountMenu = useCallback(() => {
+        setShowAccountMenu((current) => !current)
     }, []);
 
     return (
@@ -24,8 +52,26 @@ const Navbar = () => {
                 </div>
                 <div onClick={toggleMobileMenu} className="lg:hidden flex flex-row items-center gap-2 ml-8 cursor-pointer relative">
                     <p className="text-white text-sm">Browse</p>
-                    <LuChevronDown className="text-white transition" />
+                    <LuChevronDown className={`text-white transition ${showMobileMenu ? 'rotate-180' : 'rotate-0'}`} />
                     <MobileMenu visible={showMobileMenu} />
+                </div>
+
+                <div className="flex flex-row ml-auto gap-7 items-center">
+                    <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition ">
+                        <BsSearch />
+                    </div>
+                    <div className="text-gray-200 hover:text-gray-300 cursor-pointer transition ">
+                        <BsBell />
+                    </div>
+
+
+                    <div onClick={toggleAccountMenu} className="flex flex-row items-center gap-2 cursor-pointer relative">
+                        <div className="w-6 h-6 lg:w-10 lg:h-10 rounded-md overflow-hidden">
+                            <img src="/images/default-red.png" alt="profile" />
+                        </div>
+                        <LuChevronDown className={`text-white transition ${showAccountMenu ? 'rotate-180' : 'rotate-0'}`} />
+                        <AccountMenu visible={showAccountMenu} />
+                    </div>
                 </div>
 
             </div>
