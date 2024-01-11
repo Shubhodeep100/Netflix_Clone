@@ -44,7 +44,7 @@ const Auth = () => {
                 email,
                 password,
                 redirect: false,
-                callbackUrl: '/profiles'
+                callbackUrl: '/'
             });
 
             router.push('/profiles');
