@@ -2,7 +2,6 @@ import Billboard from '@/components/Billboard';
 import InfoModal from '@/components/InfoModal';
 import MovieList from '@/components/MovieList';
 import Navbar from '@/components/Navbar';
-import useCurrentUser from '@/hooks/useCurrentUser';
 import useFavorites from '@/hooks/useFavorites';
 import useInfoModal from '@/hooks/useInfoModal';
 import useMovieList from '@/hooks/useMovieList';
