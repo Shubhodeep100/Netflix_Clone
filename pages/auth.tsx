@@ -77,7 +77,7 @@ const Auth = () => {
     return (
         <>
             <Head>
-                <title>Authentication | Letflix</title>
+                <title>Authentication</title>
                 <meta name="description" content="Letflix, Authentication page" />
             </Head>
 
