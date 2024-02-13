@@ -14,10 +14,10 @@ const Watch = () => {
     return (
         <>
             <Head>
-                <title>{data?.title} | Letflix</title>
+                <title>{data?.title} | Netflix</title>
                 <meta
                     name="description"
-                    content={`Letflix, ${data?.title} movie page`}
+                    content={`Netflix, ${data?.title} movie page`}
                 />
             </Head>
 
